@@ -813,7 +813,7 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
-		sw = m->ww - drawstatusbar(m, bh, stext);
+		tw = m->ww - drawstatusbar(m, bh, stext);
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -2240,12 +2240,17 @@ main(int argc, char *argv[])
 {
 	if (argc == 2 && !strcmp("-v", argv[1]))
 		die("dwm-"VERSION);
-	else if (argc != 1)
+	else if (argc != 1 && strcmp("-s", argv[1]))
 		die("usage: dwm [-v]");
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if (!(dpy = XOpenDisplay(NULL)))
 		die("dwm: cannot open display");
+	if (argc > 1 && !strcmp("-s", argv[1])) {
+		XStoreName(dpy, RootWindow(dpy, DefaultScreen(dpy)), argv[2]);
+		XCloseDisplay(dpy);
+		return 0;
+	}
 	checkotherwm();
 	setup();
 #ifdef __OpenBSD__
