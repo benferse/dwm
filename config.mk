@@ -4,7 +4,7 @@ VERSION = 6.3
 # Customize below to fit your system
 
 # paths
-PREFIX = /home/benferse/.local
+PREFIX = ~/.local
 MANPREFIX = ${PREFIX}/share/man
 
 X11INC = /usr/include/X11
