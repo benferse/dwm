@@ -37,7 +37,9 @@ static const int nmaster     = 1;    /* number of clients in master area */
 /* benferse - ignore tiled sizing hints, mostly so terminals don't look odd */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
+#include "gaplessgrid.c"
 #include "horizgrid.c"
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -48,6 +50,7 @@ static const Layout layouts[] = {
 	{ "TTT",      bstack },
 	{ "===",      bstackhoriz },
 	{ "###",      horizgrid },
+	{ "###",      gaplessgrid },
 };
 
 /* key definitions */
