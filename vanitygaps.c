@@ -45,6 +45,7 @@ setgaps(int oh, int ov, int ih, int iv)
 	arrange(selmon);
 }
 
+__attribute__((unused))
 void
 togglegaps(const Arg *arg)
 {
@@ -56,12 +57,14 @@ togglegaps(const Arg *arg)
 	arrange(NULL);
 }
 
+__attribute__((unused))
 void
 defaultgaps(const Arg *arg)
 {
 	setgaps(gappoh, gappov, gappih, gappiv);
 }
 
+__attribute__((unused))
 void
 incrgaps(const Arg *arg)
 {
@@ -73,6 +76,7 @@ incrgaps(const Arg *arg)
 	);
 }
 
+__attribute__((unused))
 void
 incrigaps(const Arg *arg)
 {
@@ -84,6 +88,7 @@ incrigaps(const Arg *arg)
 	);
 }
 
+__attribute__((unused))
 void
 incrogaps(const Arg *arg)
 {
@@ -95,6 +100,7 @@ incrogaps(const Arg *arg)
 	);
 }
 
+__attribute__((unused))
 void
 incrohgaps(const Arg *arg)
 {
@@ -106,6 +112,7 @@ incrohgaps(const Arg *arg)
 	);
 }
 
+__attribute__((unused))
 void
 incrovgaps(const Arg *arg)
 {
@@ -117,6 +124,7 @@ incrovgaps(const Arg *arg)
 	);
 }
 
+__attribute__((unused))
 void
 incrihgaps(const Arg *arg)
 {
@@ -128,6 +136,7 @@ incrihgaps(const Arg *arg)
 	);
 }
 
+__attribute__((unused))
 void
 incrivgaps(const Arg *arg)
 {
@@ -139,6 +148,7 @@ incrivgaps(const Arg *arg)
 	);
 }
 
+__attribute__((unused))
 void
 getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc)
 {
