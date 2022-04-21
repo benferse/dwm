@@ -10,6 +10,8 @@ static       unsigned int gappov    = 20;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static       int showbar            = 1;        /* 0 means no bar */
 static       int topbar             = 1;        /* 0 means bottom bar */
+static       int horizpadbar        = 2;        /* horizontal padding for statusbar */
+static       int vertpadbar         = 0;        /* vertical padding for statusbar */
 static       char font[]            = "monospace:Regular:pixelsize=32:antialias=true:autohint=true";
 static       char dmenufont[]       = "monospace:Regular:pixelsize=32:antialias=true:autohint=true";
 static const char *fonts[]          = { font };
@@ -109,6 +111,8 @@ ResourcePref resources[] = {
     { "gappiv",             INTEGER, &gappiv },
     { "gappoh",             INTEGER, &gappoh },
     { "gappov",             INTEGER, &gappov },
+    { "horizpadbar",        INTEGER, &horizpadbar },
+    { "vertpadbar",         INTEGER, &vertpadbar },
 };
 
 static Key keys[] = {

@@ -774,7 +774,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 			if (!isCode) {
 				isCode = 1;
 				text[i] = '\0';
-				w += TEXTW(text) - lrpad;
+				w += TEXTW(text);
 				text[i] = '^';
 				if (text[++i] == 'f')
 					w += atoi(text + ++i);
@@ -786,12 +786,12 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 		}
 	}
 	if (!isCode)
-		w += TEXTW(text) - lrpad;
+		w += TEXTW(text);
 	else
 		isCode = 0;
 	text = p;
 
-	w += 2; /* 1px padding on both sides */
+	w += horizpadbar; /* horizbarpad padding on both sides */
 	ret = x = m->ww - w;
 
 	drw_setscheme(drw, scheme[LENGTH(colors)]);
@@ -807,8 +807,8 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 			isCode = 1;
 
 			text[i] = '\0';
-			w = TEXTW(text) - lrpad;
-			drw_text(drw, x, 0, w, bh, 0, text, 0);
+			w = TEXTW(text);
+			drw_text(drw, x, 0, w, bh, lrpad / 2, text, 0);
 
 			x += w;
 
@@ -851,8 +851,8 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	}
 
 	if (!isCode) {
-		w = TEXTW(text) - lrpad;
-		drw_text(drw, x, 0, w, bh, 0, text, 0);
+		w = TEXTW(text);
+		drw_text(drw, x, 0, w, bh, lrpad / 2, text, 0);
 	}
 
 	drw_setscheme(drw, scheme[SchemeNorm]);
@@ -1738,8 +1738,8 @@ setup(void)
 	drw = drw_create(dpy, screen, root, sw, sh);
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
-	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	lrpad = drw->fonts->h + horizpadbar;
+	bh = drw->fonts->h + vertpadbar;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
