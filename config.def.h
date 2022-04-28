@@ -150,6 +150,9 @@ static Key keys[] = {
 
     { MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
     { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+    { 0,  XF86XK_MonBrightnessUp, spawn,   SHCMD("light -A 5") },
+    { 0,  XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5") },
 };
 
 /* button definitions */
