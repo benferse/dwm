@@ -28,7 +28,7 @@ static       char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "💻", "🧭", "📣", "🦊", "🎶" };
+static const char *tags[] = { "", "", "", "" };
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -36,8 +36,8 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     isfloating   monitor */
-    {  "microsoft-edge-dev", NULL, NULL,  1 << 1,       0,           -1 },
-    {  NULL,      NULL,       "Firefox",  1 << 3,       0,           -1 },
+    {  "Microsoft-edge-dev", NULL, NULL,  1 << 1,       0,           -1 },
+    {  NULL,      NULL,       "Firefox",  1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -86,7 +86,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-c", "-bw", "5", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *lockcmd[]  = { "slock", NULL };
+static const char *powercmd[] = { "dmenu_power", "-c", "-bw", "5", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *lockcmd[]  = { "lock_screen", NULL };
 
 /*
  * Xresources preferences to load at startup
@@ -150,7 +151,7 @@ static Key keys[] = {
     TAGKEYS(                        XK_5,                      4)
 
     { MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-    { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY|ShiftMask,             XK_q,      spawn,          {.v = powercmd} },
 
     { 0, XF86XK_MonBrightnessUp,   spawn, { .v = (const char* []){ "light", "-A", "5", NULL } } },
     { 0, XF86XK_MonBrightnessDown, spawn, { .v = (const char* []){ "light", "-U", "5", NULL } } },
