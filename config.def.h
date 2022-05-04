@@ -30,6 +30,22 @@ static       char *colors[][3] = {
 /* tagging */
 static const char *tags[] = { "", "", "", "" };
 
+static char tagsel0bg[] = "#005577";
+static char tagsel0fg[] = "#eeeeee";
+static char tagsel1bg[] = "#005577";
+static char tagsel1fg[] = "#eeeeee";
+static char tagsel2bg[] = "#005577";
+static char tagsel2fg[] = "#eeeeee";
+static char tagsel3bg[] = "#005577";
+static char tagsel3fg[] = "#eeeeee";
+
+static char *tagsel[][2] = {
+    [0] = { tagsel0fg, tagsel0bg },
+    [1] = { tagsel1fg, tagsel1bg },
+    [2] = { tagsel2fg, tagsel2bg },
+    [3] = { tagsel3fg, tagsel3bg },
+};
+
 static const Rule rules[] = {
     /* xprop(1):
      *	WM_CLASS(STRING) = instance, class
@@ -114,6 +130,14 @@ ResourcePref resources[] = {
     { "gappov",             INTEGER, &gappov },
     { "horizpadbar",        INTEGER, &horizpadbar },
     { "vertpadbar",         INTEGER, &vertpadbar },
+    { "tagsel0fg",          STRING,  &tagsel0fg },
+    { "tagsel0bg",          STRING,  &tagsel0bg },
+    { "tagsel1fg",          STRING,  &tagsel1fg },
+    { "tagsel1bg",          STRING,  &tagsel1bg },
+    { "tagsel2fg",          STRING,  &tagsel2fg },
+    { "tagsel2bg",          STRING,  &tagsel2bg },
+    { "tagsel3fg",          STRING,  &tagsel3fg },
+    { "tagsel3bg",          STRING,  &tagsel3bg },
 };
  
 static Key keys[] = {
@@ -148,10 +172,10 @@ static Key keys[] = {
     TAGKEYS(                        XK_2,                      1)
     TAGKEYS(                        XK_3,                      2)
     TAGKEYS(                        XK_4,                      3)
-    TAGKEYS(                        XK_5,                      4)
 
-    { MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-    { MODKEY|ShiftMask,             XK_q,      spawn,          {.v = powercmd} },
+    { MODKEY|ShiftMask,             XK_c,         killclient,  {0} },
+    { MODKEY|ShiftMask,             XK_q,         spawn,       {.v = powercmd} },
+    { MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
 
     { 0, XF86XK_MonBrightnessUp,   spawn, { .v = (const char* []){ "light", "-A", "5", NULL } } },
     { 0, XF86XK_MonBrightnessDown, spawn, { .v = (const char* []){ "light", "-U", "5", NULL } } },
